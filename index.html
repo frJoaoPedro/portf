@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>João Pedro | Dev</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+ 
+  :root {
+    --bg-body: #080808;
+    --bg-card: #121212;
+    --text-main: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --primary-solid: #e50914; 
+    --font-family: 'Inter', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-family);
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  
+  header {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: #000; 
+  }
+
+  header h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+    color: var(--primary-solid); 
+    text-shadow: 0 0 10px rgba(229, 9, 20, 0.4); 
+  }
+
+  header p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+  }
+
+  
+  .buttons { display: flex; gap: 15px; }
+
+  .buttons a {
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: 0.2s ease;
+  }
+
+  .github { background: #24292e; color: white; border: 1px solid #333; }
+  .github:hover { background: #333; transform: translateY(-2px); }
+
+  .linkedin { background: #0077b5; color: white; }
+  .linkedin:hover { background: #0088cc; transform: translateY(-2px); }
+
+  
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    flex: 1;
+  }
+
+  section { margin-bottom: 20px; } 
+
+
+  .accordion-btn {
+    width: 100%;
+    background-color: var(--bg-card);
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 20px 25px;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+    transition: 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px; 
+  }
+
+  .accordion-btn:hover {
+    border-color: rgba(229, 9, 20, 0.5);
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+
+  .accordion-btn h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+
+  .accordion-btn .icon {
+    font-size: 1rem;
+    color: var(--text-muted);
+    transition: 0.3s ease;
+  }
+
+
+  .accordion-btn.active h2 { color: var(--primary-solid); }
+  .accordion-btn.active .icon {
+    transform: rotate(180deg);
+    color: var(--primary-solid);
+  }
+
+ 
+  .accordion-content {
+    background-color: #0b0b0b; 
+    border-radius: 0 0 12px 12px; 
+    border: 1px solid transparent;
+    padding: 0 25px; 
+    max-height: 0; 
+    overflow: hidden; 
+    transition: max-height 0.3s ease, padding 0.3s ease, border-color 0.3s ease; 
+  }
+
+  .accordion-content.open {
+    max-height: 500px; 
+    padding: 25px; 
+    border-color: rgba(229, 9, 20, 0.1);
+  }
+
+  
+  .accordion-content p { margin-bottom: 15px; color: var(--text-muted); font-size: 0.95rem;}
+  .accordion-content h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--text-main); }
+  .accordion-content h3 a { color: inherit; text-decoration: none; transition: 0.2s;}
+  .accordion-content h3 a:hover { color: var(--primary-solid); }
+
+  
+  .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #222;
+  }
+
+  
+  .skill-container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .skill-tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
+    color: #ffd700;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .bar {
+    height: 6px;
+    background: #222;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+
+  .fill {
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-solid) 0%, #ff4d4d 100%);
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    animation: load 1.5s forwards;
+    box-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
+  }
+
+  @keyframes load { to { width: var(--width); } }
+
+
+  .wave-container {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background: var(--bg-body);
+    overflow: hidden;
+    margin-top: auto; 
+  }
+
+  .wave-container svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .wave-container .wave-path {
+    animation: wave-animation 10s linear infinite;
+    fill: var(--primary-solid);
+    opacity: 0.2; 
+  }
+
+  @keyframes wave-animation {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--bg-card);
+    border-top: 1px solid #1a1a1a;
+  }
+
+  footer p { color: var(--text-muted); font-size: 0.9rem; }
+
+  
+  @media (max-width: 768px) {
+    header h1 { font-size: 2.5rem; letter-spacing: -1px; }
+    main { padding: 20px; }
+    .accordion-btn h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>JOÃO PEDRO</h1>
+  <p>💻 Desenvolvedor em formação | 🎓 Ciência da Computação</p>
+
+  <div class="buttons">
+    <a href="https://github.com/frJoaoPedro" target="_blank" class="github">GitHub</a>
+    <a href="https://www.linkedin.com/in/jo%C3%A3o-pedro-65b1873b0/" target="_blank" class="linkedin">LinkedIn</a>
+  </div>
+</header>
+
+<main>
+  <button class="accordion-btn">
+    <h2>🎓 Formação</h2>
+    <span class="icon">▼</span>
+  </button>
+  <div class="accordion-content">
+    <h3><a href="https://www.una.br/" target="_blank">Ciência da Computação - UNA</a></h3>
+    <p>1º período (Em andamento)</p>
+  </div>
+
+  <button class="accordion-btn">
+    <h2>💼 Experiência</h2>
+    <span class="icon">▼</span>
+  </button>
+  <div class="accordion-content">
+    <h3>E&M Engenharia</h3>
+    <p>Auxílio nas demandas da equipe de engenharia, apoiando atividades técnicas do dia a dia.</p>
+  </div>
+
+  <button class="accordion-btn">
+    <h2>💻 Projetos</h2>
+    <span class="icon">▼</span>
+  </button>
+  <div class="accordion-content">
+    <div class="row">
+      <div class="card">
+        <h3>📚 Estudos em Java</h3>
+        <p>Prática inicial com estruturas de controle (if, else) e loops.</p>
+      </div>
+      <div class="card">
+        <h3>🚀 Em breve: Um novo projeto</h3>
+        <p>Lógica de programação com Java e C#.</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="accordion-btn">
+    <h2>🚀 Skills</h2>
+    <span class="icon">▼</span>
+  </button>
+  <div class="accordion-content">
+    <div class="skill-container">
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">C#</span>
+        <span class="skill-tag">Python</span>
+    </div>
+
+    <p>Java (40%)</p>
+    <div class="bar"><div class="fill" style="--width: 40%"></div></div>
+    
+    <p>Python (35%)</p>
+    <div class="bar"><div class="fill" style="--width: 35%"></div></div>
+
+    <p>C# (15%)</p>
+    <div class="bar"><div class="fill" style="--width: 15%"></div></div>
+  </div>
+
+  <button class="accordion-btn">
+    <h2>🇬🇧 Idiomas & 💡 Curiosidade</h2>
+    <span class="icon">▼</span>
+  </button>
+  <div class="accordion-content">
+    <div class="row">
+        <div class="card">
+            <h3>Idiomas</h3>
+            <p>Inglês intermediário</p>
+        </div>
+        <div class="card">
+            <h3>Sobre mim</h3>
+            <p>Comecei na programação recentemente e este portfólio já é meu primeiro projeto prático.</p>
+        </div>
+    </div>
+  </div>
+</main>
+
+<div class="wave-container">
+  <svg viewBox="0 0 120 28" preserveAspectRatio="none">
+    <defs>
+      <path id="wave" d="M0 15 c30 0, 30 10, 60 10 s30 -10, 60 -10 s30 10, 60 10 s30 -10, 60 -10 v15 h-240 z" />
+    </defs>
+    <use class="wave-path" xlink:href="#wave" x="0" y="0"></use>
+  </svg>
+</div>
+
+<footer>
+  <p>📧 nebruxel.jp@gmail.com</p>
+</footer>
+
+<script>
+  
+  const accBtns = document.querySelectorAll('.accordion-btn');
+
+  accBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      
+      this.classList.toggle('active');
+
+      const content = this.nextElementSibling;
+
+
+      content.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
