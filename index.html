@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>João Pedro | Dev & Engenharia</title>
+<title>João Pedro | CS Student</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,11 +11,12 @@
 
 <style>
   :root {
-    --bg-body: #080808;
-    --bg-card: #121212;
-    --text-main: #e0e0e0;
-    --text-muted: #a0a0a0;
-    --primary-solid: #e50914; 
+    --bg-body: #0a0a0a;
+    --bg-card: #141414;
+    --text-main: #f0f0f0;
+    --text-muted: #888;
+    --primary: #e50914; 
+    --secondary: #ffd700;
     --font-family: 'Inter', sans-serif;
   }
 
@@ -25,194 +26,117 @@
     font-family: var(--font-family);
     background-color: var(--bg-body);
     color: var(--text-main);
-    line-height: 1.6;
-    overflow-x: hidden;
+    line-height: 1.5;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
   }
 
+  /* Header Compacto */
   header {
-    height: 55vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 60px 20px;
     text-align: center;
-    padding: 20px;
-    background-color: #000; 
+    background: radial-gradient(circle at center, #1a0202 0%, #0a0a0a 100%);
+    border-bottom: 1px solid #1a1a1a;
   }
 
   header h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 800;
     letter-spacing: -2px;
-    margin-bottom: 10px;
-    color: var(--primary-solid); 
-    text-shadow: 0 0 10px rgba(229, 9, 20, 0.4); 
-  }
-
-  header p {
-    font-size: 1.1rem;
-    color: var(--text-muted);
+    color: var(--primary);
     margin-bottom: 5px;
   }
 
-  .location {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 25px;
+  header p { color: var(--text-muted); font-size: 1.1rem; }
+  .badge {
+    display: inline-block;
+    background: rgba(229, 9, 20, 0.1);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-top: 10px;
+    border: 1px solid var(--primary);
   }
 
-  .buttons { display: flex; gap: 15px; }
-
-  .buttons a {
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: 0.2s ease;
-  }
-
-  .github { background: #24292e; color: white; border: 1px solid #333; }
-  .github:hover { background: #333; transform: translateY(-2px); }
-
-  .linkedin { background: #0077b5; color: white; }
-  .linkedin:hover { background: #0088cc; transform: translateY(-2px); }
-
+  /* Layout em Grid para preencher a tela */
   main {
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 40px 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas no PC */
+    gap: 20px;
     flex: 1;
   }
 
-  section { margin-bottom: 20px; } 
-
-  .accordion-btn {
-    width: 100%;
-    background-color: var(--bg-card);
-    border: 1px solid #1a1a1a;
-    border-radius: 12px;
-    padding: 20px 25px;
-    cursor: pointer;
-    text-align: left;
-    outline: none;
-    transition: 0.3s;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px; 
-  }
-
-  .accordion-btn:hover {
-    border-color: rgba(229, 9, 20, 0.5);
-    background-color: rgba(255, 255, 255, 0.03);
-  }
-
-  .accordion-btn h2 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin: 0;
-    color: var(--text-main);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .accordion-btn .icon {
-    font-size: 1rem;
-    color: var(--text-muted);
-    transition: 0.3s ease;
-  }
-
-  .accordion-btn.active h2 { color: var(--primary-solid); }
-  .accordion-btn.active .icon { transform: rotate(180deg); color: var(--primary-solid); }
-
-  .accordion-content {
-    background-color: #0b0b0b; 
-    border-radius: 0 0 12px 12px; 
-    border: 1px solid transparent;
-    padding: 0 25px; 
-    max-height: 0; 
-    overflow: hidden; 
-    transition: max-height 0.3s ease, padding 0.3s ease; 
-  }
-
-  .accordion-content.open {
-    max-height: 1000px; 
-    padding: 25px; 
-    border-color: rgba(229, 9, 20, 0.1);
-    margin-bottom: 15px;
-  }
-
-  .accordion-content p { margin-bottom: 10px; color: var(--text-muted); font-size: 0.95rem;}
-  .accordion-content h3 { font-size: 1.1rem; margin-top: 15px; margin-bottom: 5px; color: var(--text-main); }
-  .accordion-content h3:first-child { margin-top: 0; }
-  
-  .row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 15px;
-  }
-
   .card {
-    background: rgba(255, 255, 255, 0.02);
-    padding: 20px;
-    border-radius: 10px;
+    background: var(--bg-card);
     border: 1px solid #222;
+    border-radius: 16px;
+    padding: 25px;
+    transition: transform 0.2s ease;
   }
 
-  .skill-tag {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid #333;
-    color: #ffd700;
-    padding: 4px 10px;
-    border-radius: 15px;
+  .card:hover { border-color: #333; }
+
+  .card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary);
+  }
+
+  h3 { font-size: 1rem; margin-top: 15px; color: #fff; }
+  p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 5px; }
+
+  /* Skills Minimalistas */
+  .skill-list { margin-top: 10px; }
+  .skill-item { margin-bottom: 15px; }
+  .skill-info { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 5px; }
+  
+  .bar-bg { height: 4px; background: #222; border-radius: 2px; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--primary); width: var(--w); box-shadow: 0 0 8px var(--primary); }
+
+  /* Links */
+  .social-links {
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: 0.3s;
+  }
+  .btn-git { background: #fff; color: #000; }
+  .btn-in { background: #0077b5; color: #fff; }
+  .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 40px;
     font-size: 0.8rem;
-    margin: 0 5px 10px 0;
+    color: #444;
+    border-top: 1px solid #1a1a1a;
   }
 
-  .bar {
-    height: 6px;
-    background: #222;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .fill {
-    height: 100%;
-    background: var(--primary-solid);
-    width: var(--width);
-  }
-
-  .wave-container {
-    position: relative;
-    width: 100%;
-    height: 60px;
-    background: var(--bg-body);
-    overflow: hidden;
-  }
-
-  .wave-path {
-    animation: wave-animation 10s linear infinite;
-    fill: var(--primary-solid);
-    opacity: 0.15;
-  }
-
-  @keyframes wave-animation {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  footer { text-align: center; padding: 30px; background: #000; color: var(--text-muted); font-size: 0.85rem; }
-
-  @media (max-width: 768px) {
-    header h1 { font-size: 2.8rem; }
+  /* Responsividade: vira uma coluna no celular */
+  @media (max-width: 850px) {
+    main { grid-template-columns: 1fr; }
+    .social-links { grid-column: span 1; flex-direction: column; }
+    header h1 { font-size: 2.2rem; }
   }
 </style>
 </head>
@@ -220,112 +144,65 @@
 
 <header>
   <h1>JOÃO PEDRO</h1>
-  <p>Estudante de Ciência da Computação (1º Período)</p>
-  <p class="location">Contagem, MG • 18 anos</p>
-
-  <div class="buttons">
-    <a href="https://github.com/frJoaoPedro" target="_blank" class="github">GitHub</a>
-    <a href="https://www.linkedin.com/in/jo%C3%A3o-pedro-65b1873b0/" target="_blank" class="linkedin">LinkedIn</a>
-  </div>
+  <p>Estudante de Ciência da Computação na UNA</p>
+  <div class="badge">Iniciante • 1º Período</div>
+  <p style="margin-top: 15px; font-size: 0.9rem;">📍 Contagem, MG</p>
 </header>
 
 <main>
-  <button class="accordion-btn">
-    <h2>🎓 Formação Acadêmica</h2>
-    <span class="icon">▼</span>
-  </button>
-  <div class="accordion-content">
-    <h3>Ciência da Computação - Centro Universitário UNA</h3>
-    <p>Ingresso via ENEM em 2025 (Em andamento)</p>
-    <p>Foco em Lógica de Programação, Estrutura de Dados e Desenvolvimento de Software.</p>
+  <div class="social-links">
+    <a href="https://github.com/frJoaoPedro" target="_blank" class="btn btn-git">GitHub Oficial</a>
+    <a href="https://www.linkedin.com/in/jo%C3%A3o-pedro-65b1873b0/" target="_blank" class="btn btn-in">LinkedIn</a>
   </div>
 
-  <button class="accordion-btn">
-    <h2>💼 Experiência Profissional</h2>
-    <span class="icon">▼</span>
-  </button>
-  <div class="accordion-content">
-    <h3>Estagiário | E&M Engenharia</h3>
-    <p><em>Nov/2024 – Mai/2025</em></p>
-    <p>• Apoio na organização de documentos técnicos e relatórios de campo.</p>
-    <p>• Utilização de AutoCAD para ajustes simples em projetos.</p>
-    <p>• Execução de tarefas operacionais para suporte à equipe técnica.</p>
+  <div class="card">
+    <h2>🎓 Acadêmico</h2>
+    <h3>Ciência da Computação</h3>
+    <p>Centro Universitário UNA</p>
+    <p><em>Ingresso 2025 - 1º Período</em></p>
+    <p style="margin-top: 10px; color: var(--secondary)">Foco: Fundamentos de Algoritmos e Java.</p>
   </div>
 
-  <button class="accordion-btn">
-    <h2>📜 Cursos Complementares</h2>
-    <span class="icon">▼</span>
-  </button>
-  <div class="accordion-content">
-    <h3>Escola Técnica Grau</h3>
-    <p>• AutoCAD 2D e Civil 3D (Concluído)</p>
-    <p>• SketchUp e Gestão de Projetos (Em andamento)</p>
-    <h3>Escola Crescer Brasil</h3>
-    <p>• Pacote Office Completo (Excel, Word, PowerPoint)</p>
-  </div>
-
-  <button class="accordion-btn">
-    <h2>🚀 Habilidades Técnicas</h2>
-    <span class="icon">▼</span>
-  </button>
-  <div class="accordion-content">
-    <div class="skill-tag">Java</div>
-    <div class="skill-tag">C#</div>
-    <div class="skill-tag">Git & GitHub</div>
-    <div class="skill-tag">AutoCAD</div>
-    <div class="skill-tag">Linux (CachyOS)</div>
-    <div class="skill-tag">Lógica de Programação</div>
-
-    <h3 style="margin-top:20px">Domínio Atual</h3>
-    <p>Lógica & Java</p>
-    <div class="bar"><div class="fill" style="--width: 45%"></div></div>
-    <p>AutoCAD & Ferramentas Técnicas</p>
-    <div class="bar"><div class="fill" style="--width: 70%"></div></div>
-  </div>
-
-  <button class="accordion-btn">
-    <h2>🌍 Idiomas & Contato</h2>
-    <span class="icon">▼</span>
-  </button>
-  <div class="accordion-content">
-    <div class="row">
-      <div class="card">
-        <h3>Inglês</h3>
-        <p>Nível Iniciante/Intermediário (Focado em termos técnicos de TI e Engenharia).</p>
+  <div class="card">
+    <h2>🚀 Estudos Atuais</h2>
+    <div class="skill-list">
+      <div class="skill-item">
+        <div class="skill-info"><span>Lógica de Programação</span><span>50%</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="--w: 50%"></div></div>
       </div>
-      <div class="card">
-        <h3>Contato Direto</h3>
-        <p>📧 nebruxel.jp@gmail.com</p>
-        <p>📞 (31) 9 9645-9519</p>
+      <div class="skill-item">
+        <div class="skill-info"><span>Sintaxe Java</span><span>30%</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="--w: 30%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-info"><span>Ambiente Linux (CachyOS)</span><span>45%</span></div>
+        <div class="bar-bg"><div class="bar-fill" style="--w: 45%"></div></div>
       </div>
     </div>
+    <p style="font-size: 0.75rem; font-style: italic;">*Níveis baseados no progresso da grade curricular.</p>
+  </div>
+
+  <div class="card">
+    <h2>💼 Experiência</h2>
+    <h3>E&M Engenharia</h3>
+    <p>Estagiário (Nov/24 - Mai/25)</p>
+    <p>• Suporte operacional e documentação técnica.</p>
+    <p>• Ajustes em AutoCAD 2D/3D.</p>
+  </div>
+
+  <div class="card">
+    <h2>🛠️ Ferramentas & Cursos</h2>
+    <p><strong>AutoCAD:</strong> Civil 3D e 2D (Técnico Grau).</p>
+    <p><strong>Dev:</strong> VS Code, Git e GitHub.</p>
+    <p><strong>Office:</strong> Domínio completo de Excel e Word.</p>
+    <p><strong>Inglês:</strong> Nível Técnico (Leitura).</p>
   </div>
 </main>
 
-<div class="wave-container">
-  <svg viewBox="0 0 120 28" preserveAspectRatio="none">
-    <defs>
-      <path id="wave" d="M0 15 c30 0, 30 10, 60 10 s30 -10, 60 -10 s30 10, 60 10 s30 -10, 60 -10 v15 h-240 z" />
-    </defs>
-    <use class="wave-path" xlink:href="#wave" x="0" y="0"></use>
-  </svg>
-</div>
-
 <footer>
   <p>João Pedro Franco Reis • 2026</p>
-  <p>Desenvolvido com foco em Ciência da Computação</p>
+  <p>nebruxel.jp@gmail.com</p>
 </footer>
-
-<script>
-  const accBtns = document.querySelectorAll('.accordion-btn');
-  accBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-      this.classList.toggle('active');
-      const content = this.nextElementSibling;
-      content.classList.toggle('open');
-    });
-  });
-</script>
 
 </body>
 </html>
