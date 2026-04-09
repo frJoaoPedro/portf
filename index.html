@@ -3,185 +3,203 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>João Pedro | Dev Journey</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
+<title>João Pedro | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #050505;
-  --card-bg: #111;
-  --primary: #e50914;
-  --text: #fff;
-  --text-dim: #888;
-}
-
-* { margin:0; padding:0; box-sizing:border-box; }
-
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-}
-
-header {
-  text-align:center;
-  padding:80px 20px;
-  background: radial-gradient(circle, #1a0505, #050505);
-}
-
-#typing {
-  font-size:3rem;
-  color: var(--primary);
-  text-shadow:0 0 20px rgba(229,9,20,0.5);
-}
-
-.subtitle {
-  color: var(--text-dim);
-  margin-top:10px;
-}
-
-.status {
-  margin-top:15px;
-  font-size:0.8rem;
-  color:gold;
-}
-
-.links {
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  margin:20px;
-}
-
-.btn {
-  padding:10px 20px;
-  border-radius:10px;
-  font-weight:bold;
-  text-decoration:none;
-  transition:0.3s;
-}
-
-.btn:hover {
-  transform:scale(1.05);
-}
-
-.btn-git { background:#fff; color:#000; }
-.btn-in { background:#0077b5; color:#fff; }
-
-.container {
-  width:90%;
-  max-width:1000px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
-  gap:20px;
-}
-
-.card {
-  background: var(--card-bg);
-  padding:25px;
-  border-radius:15px;
-  border:1px solid #222;
-  opacity:0;
-  transform:translateY(20px);
-  animation:fadeIn 0.6s forwards;
-}
-
-.card:nth-child(2){animation-delay:0.2s}
-.card:nth-child(3){animation-delay:0.4s}
-.card:nth-child(4){animation-delay:0.6s}
-.card:nth-child(5){animation-delay:0.8s}
-
-.card:hover {
-  border-color: var(--primary);
-}
-
-.card h2 {
-  color: var(--primary);
-  margin-bottom:10px;
-}
-
-.card p {
-  color: var(--text-dim);
-}
-
-@keyframes fadeIn {
-  to {
-    opacity:1;
-    transform:translateY(0);
+  :root {
+    --bg: #030712;
+    --accent: #3b82f6; /* Azul Tech */
+    --accent-glow: rgba(59, 130, 246, 0.5);
+    --card-bg: rgba(17, 24, 39, 0.7);
+    --text: #f9fafb;
+    --text-dim: #9ca3af;
   }
-}
 
-footer {
-  text-align:center;
-  padding:40px;
-  color:#555;
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg);
+    background-image: 
+      radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.15) 0%, transparent 25%),
+      radial-gradient(circle at 100% 100%, rgba(147, 51, 234, 0.1) 0%, transparent 25%);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Header Minimalista */
+  header {
+    width: 100%;
+    max-width: 1000px;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinhado à esquerda para preencher melhor */
+  }
+
+  header h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    background: linear-gradient(to right, #fff, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+  }
+
+  .status-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* Grid Robusto */
+  .container {
+    width: 90%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    padding-bottom: 80px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 32px;
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card:hover {
+    border-color: rgba(59, 130, 246, 0.4);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .card h2 {
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .card h3 { font-size: 1.25rem; margin-bottom: 8px; font-weight: 700; }
+  .card p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; }
+
+  /* Skills Visual */
+  .skill-row { margin-bottom: 20px; }
+  .skill-info { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px; font-weight: 600; }
+  .track { height: 8px; background: #1f2937; border-radius: 4px; overflow: hidden; }
+  .fill { height: 100%; background: linear-gradient(90deg, var(--accent), #60a5fa); width: var(--p); border-radius: 4px; }
+
+  /* Links Modernos */
+  .button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary { background: var(--text); color: var(--bg); }
+  .btn-secondary { background: rgba(255, 255, 255, 0.05); color: var(--text); border: 1px solid rgba(255, 255, 255, 0.1); }
+  .btn:hover { transform: scale(1.05); }
+
+  footer {
+    padding: 60px;
+    color: #4b5563;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .container { grid-template-columns: 1fr; }
+    header h1 { font-size: 2.8rem; }
+  }
 </style>
 </head>
-
 <body>
 
 <header>
-  <h1 id="typing"></h1>
-  <p class="subtitle">Desenvolvedor em evolução 🚀</p>
-  <p class="status">● Ciência da Computação - UNA</p>
+  <div class="status-tag">● Estudante Ciência da Computação (UNA)</div>
+  <h1>João Pedro</h1>
+  <p style="color: var(--text-dim); max-width: 500px;">Desenvolvedor iniciante focado em back-end e infraestrutura Linux. Atualmente no 1º período da jornada acadêmica.</p>
+  
+  <div class="button-group">
+    <a href="https://github.com/frJoaoPedro" target="_blank" class="btn btn-primary">GitHub</a>
+    <a href="https://www.linkedin.com/in/jo%C3%A3o-pedro-65b1873b0/" target="_blank" class="btn btn-secondary">LinkedIn</a>
+  </div>
 </header>
 
-<div class="links">
-  <a href="https://github.com/frJoaoPedro" class="btn btn-git">GitHub</a>
-  <a href="https://linkedin.com" class="btn btn-in">LinkedIn</a>
-</div>
-
 <main class="container">
+  
+  <div class="card">
+    <h2>Exploração</h2>
+    <h3>Aprendizado Ativo</h3>
+    <p>Construindo fundamentos sólidos em Lógica de Programação e Java. Usuário entusiasta de CachyOS e terminal Linux.</p>
+    <p style="margin-top: 15px; font-weight: 600; color: var(--text);">📍 Contagem, MG</p>
+  </div>
 
-<div class="card">
-  <h2>🎯 Sobre</h2>
-  <p>Estudante de Ciência da Computação focado em back-end e automação com Linux.</p>
-</div>
+  <div class="card">
+    <h2>Nível de Estudo</h2>
+    <div class="skill-row">
+      <div class="skill-info"><span>Lógica (Fundamentos)</span><span>50%</span></div>
+      <div class="track"><div class="fill" style="--p: 50%"></div></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-info"><span>Sintaxe Java</span><span>30%</span></div>
+      <div class="track"><div class="fill" style="--p: 30%"></div></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-info"><span>Terminal Linux</span><span>45%</span></div>
+      <div class="track"><div class="fill" style="--p: 45%"></div></div>
+    </div>
+  </div>
 
-<div class="card">
-  <h2>🧠 Em aprendizado</h2>
-  <p>Lógica de programação, Java e terminal Linux.</p>
-</div>
+  <div class="card">
+    <h2>Histórico</h2>
+    <h3>E&M Engenharia</h3>
+    <p>Estágio Operacional (Nov/24 - Mai/25)</p>
+    <p>Experiência prática em documentação técnica e suporte a projetos com AutoCAD.</p>
+  </div>
 
-<div class="card">
-  <h2>🚀 Projetos</h2>
-  <p>Ainda construindo meus primeiros projetos práticos.</p>
-  <p>Em breve novidades...</p>
-</div>
-
-<div class="card">
-  <h2>💼 Experiência</h2>
-  <p>E&M Engenharia - suporte em projetos e AutoCAD.</p>
-</div>
-
-<div class="card">
-  <h2>📜 Certificados</h2>
-  <p>AutoCAD, Pacote Office e Inglês Técnico.</p>
-</div>
+  <div class="card">
+    <h2>Qualificações</h2>
+    <p>• AutoCAD 2D/3D (Grau Técnico)</p>
+    <p>• Pacote Office (Excel Avançado)</p>
+    <p>• Inglês Técnico para Documentação</p>
+    <p>• Configuração de Ambientes Linux</p>
+  </div>
 
 </main>
 
 <footer>
-  <p>João Pedro • nebruxel.jp@gmail.com</p>
-  <p>Feito com HTML, CSS e dedicação 💻</p>
+  <p>Construído por João Pedro • 2026</p>
 </footer>
-
-<script>
-const text = "JOÃO PEDRO";
-let i = 0;
-
-function typing(){
-  if(i < text.length){
-    document.getElementById("typing").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typing,100);
-  }
-}
-
-typing();
-</script>
 
 </body>
 </html>
